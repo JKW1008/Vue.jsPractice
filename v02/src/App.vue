@@ -2,46 +2,15 @@
 export default {
   data() {
     return {
-      x: 0,
-      y: 0,
-      msg: "",
+      inputName: "홍길동",
     };
-  },
-  methods: {
-    mousePos(e) {
-      this.x = e.offsetX;
-      this.y = e.offsetY;
-    },
-    mouseClick(e) {
-      this.msg += this.x + "," + this.y + "\n";
-    },
   },
 };
 </script>
 
 <template>
-  <div
-    id="display"
-    v-on:mousemove="mousePos"
-    v-on:click.right.prevent="mouseClick"
-  >
-    x: {{ x }} <br />
-    y: {{ y }}
-  </div>
-  <textarea>
-  {{ msg }}
-</textarea
-  >
+  <input type="text" v-model="inputName" />
+  <p>{{ inputName }}</p>
 </template>
 
-<style>
-#display {
-  width: 200px;
-  height: 200px;
-  background-color: goldenrod;
-}
-
-textarea {
-  height: 500px;
-}
-</style>
+<style></style>
