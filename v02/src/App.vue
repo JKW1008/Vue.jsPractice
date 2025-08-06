@@ -2,15 +2,17 @@
 export default {
   data() {
     return {
-      inputName: "홍길동",
+      agree: false,
     };
   },
 };
 </script>
 
 <template>
-  <input type="text" v-model="inputName" />
-  <p>{{ inputName }}</p>
+  <p>이 약관에 동의하십니까?</p>
+  <input type="checkbox" v-model="agree" />
+  {{ agree }}
+  <button v-show="agree">가입하기</button>
 </template>
 
 <style></style>
