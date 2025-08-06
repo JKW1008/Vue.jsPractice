@@ -1,25 +1,22 @@
 <script>
 export default {
-  data: function () {
+  data() {
     return {
-      num: 0,
+      click_yes: true,
     };
   },
   methods: {
-    increment() {
-      this.num++;
-    },
-    decrement() {
-      this.num--;
+    createAlert() {
+      if (this.click_yes) {
+        alert("경고창이 떴습니다.");
+      }
     },
   },
 };
 </script>
 
 <template>
-  <p>{{ num }}</p>
-  <button v-on:click="increment">Increase number</button>
-  <button v-on:click="decrement">Decrease number</button>
+  <button v-on:click.once="createAlert">Click</button>
 </template>
 
 <style></style>
