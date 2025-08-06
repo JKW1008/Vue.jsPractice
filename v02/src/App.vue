@@ -2,21 +2,21 @@
 export default {
   data() {
     return {
-      click_yes: true,
+      kValue: "",
     };
   },
   methods: {
-    createAlert() {
-      if (this.click_yes) {
-        alert("경고창이 떴습니다.");
-      }
+    getKey(e) {
+      this.kValue = e.key;
+      alert("control + s 를 누르셨습니다.");
     },
   },
 };
 </script>
 
 <template>
-  <button v-on:click.once="createAlert">Click</button>
+  <input type="text" v-on:keydown.control.s="getKey" /><br />
+  <span>{{ kValue }}</span>
 </template>
 
 <style></style>
