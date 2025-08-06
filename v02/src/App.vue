@@ -1,18 +1,20 @@
 <script>
 export default {
-  data() {
+  data: function () {
     return {
-      count: 0,
+      userName: "왕초보",
     };
+  },
+  methods: {
+    greeting(userName) {
+      return " Hi, there " + userName;
+    },
   },
 };
 </script>
 
 <template>
-  <p>{{ "count : " + count }}</p>
-  <button v-on:click="count++">숫자 증가</button>
-  <button v-on:click="count--">숫자 감소</button>
-  <button v-on:mouseover="count = 0">초기화</button>
+  <h1>{{ greeting("Tom") }}</h1>
 </template>
 
 <style></style>
