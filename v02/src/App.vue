@@ -2,19 +2,24 @@
 export default {
   data: function () {
     return {
-      userName: "왕초보",
+      num: 0,
     };
   },
   methods: {
-    greeting(userName) {
-      return " Hi, there " + userName;
+    increment() {
+      this.num++;
+    },
+    decrement() {
+      this.num--;
     },
   },
 };
 </script>
 
 <template>
-  <h1>{{ greeting("Tom") }}</h1>
+  <p>{{ num }}</p>
+  <button v-on:click="increment">Increase number</button>
+  <button v-on:click="decrement">Decrease number</button>
 </template>
 
 <style></style>
