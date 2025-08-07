@@ -2,33 +2,23 @@
 export default {
   data() {
     return {
-      myWidth: 10,
+      chk: false,
     };
   },
-  methods: {
-    incWidth() {
-      this.myWidth += 10;
-    },
-    initWidh() {
-      this.myWidth = 10;
+  computed: {
+    yesNo() {
+      if (this.chk) {
+        return "yes";
+      } else {
+        return "no";
+      }
     },
   },
 };
 </script>
 
 <template>
-  <div
-    class="demo"
-    @mouseover="initWidh"
-    :style="{ width: myWidth + 'px' }"
-  ></div>
-  <button @:click="incWidth">버튼을 클릭해 보세요.</button>
+  <input type="checkbox" v-model="chk" /> {{ yesNo }} {{ yesNo }} {{ yesNo }}
 </template>
 
-<style>
-.demo {
-  width: 100px;
-  height: 100px;
-  background-color: blueviolet;
-}
-</style>
+<style></style>
