@@ -2,26 +2,33 @@
 export default {
   data() {
     return {
-      bgClass: "bg",
-      erClass: "text-danger",
-      isActive: false,
+      myWidth: 10,
     };
+  },
+  methods: {
+    incWidth() {
+      this.myWidth += 10;
+    },
+    initWidh() {
+      this.myWidth = 10;
+    },
   },
 };
 </script>
 
 <template>
-  <div class="border" :class="[isActive ? bgClass : '', erClass]">Warning</div>
+  <div
+    class="demo"
+    @mouseover="initWidh"
+    :style="{ width: myWidth + 'px' }"
+  ></div>
+  <button @:click="incWidth">버튼을 클릭해 보세요.</button>
 </template>
 
 <style>
-.border {
-  border: 2px solid red;
-}
-.bg {
-  background-color: gray;
-}
-.text-danger {
-  color: red;
+.demo {
+  width: 100px;
+  height: 100px;
+  background-color: blueviolet;
 }
 </style>
