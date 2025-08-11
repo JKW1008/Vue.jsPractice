@@ -3,7 +3,7 @@ export default {
   methods: {
     logInput() {
       // console.log(this.$refs.myInput.value);
-      console.log(document.getElementById("myInput").value);
+      console.log(document.getElementById("myInput"));
     },
   },
 };
