@@ -3,6 +3,11 @@ import FancyButton from "@/components/FancyButton.vue";
 import MainLayout from "@/MainLayout.vue";
 
 export default {
+  data() {
+    return {
+      buttonname: "clickclick",
+    };
+  },
   components: {
     FancyButton,
     MainLayout,
@@ -21,7 +26,13 @@ export default {
     <template #footer>
       <h1>Footer</h1>
     </template>
+    <template #default>
+      <h1>default</h1>
+    </template>
   </MainLayout>
-  <FancyButton><strong>click3</strong></FancyButton>
+  <FancyButton v-slot="{ buttonname }">
+    <!-- <strong>click3</strong> -->
+    {{ buttonname }}
+  </FancyButton>
 </template>
 <style></style>
