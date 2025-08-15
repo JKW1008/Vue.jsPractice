@@ -1,16 +1,19 @@
+<script>
+export default {
+  props: ["todoList"],
+  methods: {
+    todoUpdate(id) {
+      this.$emit("todoUpdate", id);
+    },
+  },
+};
+</script>
+
 <template>
   <ul id="todo-list">
-    <li>
-      Sample Task 1
-      <button type="button">Delete</button>
-    </li>
-    <li class="completed">
-      Sample Task 2
-      <button type="button">Delete</button>
-    </li>
-    <li>
-      Sample Task 3
-      <button type="button">Delete</button>
+    <li v-for="todo in todoList" :class="{ completed: todo.completed }">
+      {{ todo.msg }}
+      <button type="button" @click="todoUpdate(todo.id)">Delete</button>
     </li>
   </ul>
 </template>

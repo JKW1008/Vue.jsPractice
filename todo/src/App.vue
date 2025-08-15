@@ -24,6 +24,12 @@ export default {
       this.todoList.push(item);
       console.log(JSON.stringify(this.todoList));
     },
+    todoUpdate(id) {
+      this.todoList = this.todoList.map((v) =>
+        v.id === id ? { ...v, completed: !v.completed } : v
+      );
+      console.log(JSON.stringify(this.todoList));
+    },
   },
 };
 </script>
@@ -31,6 +37,6 @@ export default {
   <div class="todo-container">
     <h1>TODO List</h1>
     <TodoInput @todo-input="todoInput" />
-    <TodoList />
+    <TodoList :todo-list @todo-update="todoUpdate" />
   </div>
 </template>
