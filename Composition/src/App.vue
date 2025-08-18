@@ -1,22 +1,13 @@
 <script setup>
-import { ref } from "vue";
-
-const titleClass = ref("");
-
-const good = () => {
-  titleClass.value = "title";
+import { ref, computed } from "vue";
+const cnt = ref(10);
+const oddEven = computed(() => (cnt.value % 2 ? "Odd" : "Even"));
+const counter = () => {
+  cnt.value++;
 };
-
-// function good() {
-//   titleClass.value = "title";
-// }
 </script>
 <template>
-  <h1 :class="titleClass">Make me red</h1>
-  <button @click="good">Click</button>
+  <p>cnt : {{ cnt }}</p>
+  <p>odd or even : {{ oddEven }}</p>
+  <button @click="counter">Click</button>
 </template>
-<style>
-.title {
-  color: red;
-}
-</style>
