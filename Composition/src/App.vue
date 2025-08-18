@@ -1,13 +1,21 @@
 <script setup>
-import { ref, computed } from "vue";
-const cnt = ref(10);
-const oddEven = computed(() => (cnt.value % 2 ? "Odd" : "Even"));
-const counter = () => {
-  cnt.value++;
-};
+import { ref, reactive, watch } from "vue";
+const cnt = ref(1);
+const obj = reactive({ oldV: null, newV: null });
+const counter = () => cnt.value++;
+
+// function counter() {
+//   cnt.value++;
+// }
+
+watch(cnt, (newValue, oldValue) => {
+  obj.oldV = oldValue;
+  obj.newV = newValue;
+});
 </script>
 <template>
-  <p>cnt : {{ cnt }}</p>
-  <p>odd or even : {{ oddEven }}</p>
+  <p>cnt: {{ cnt }}</p>
+  <p>old: {{ obj.oldV }}</p>
+  <p>new: {{ obj.newV }}</p>
   <button @click="counter">Click</button>
 </template>
