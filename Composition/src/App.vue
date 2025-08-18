@@ -1,19 +1,20 @@
 <script setup>
-import { ref, watch } from "vue";
-const obj = ref({ name: "홍길동", age: 30 });
-const updateName = () => (obj.value.name = "Jason");
-watch(
-  obj,
-  (newObj, oldObj) => {
-    console.log(newObj, oldObj);
-    // console.log("Chane the name, now name : " + newObj.name);
-  },
-  { immediate: true, deep: true }
-);
+import { ref, watchEffect } from "vue";
+
+const count = ref(1);
+const name = ref("Jason");
+const counter = () => count.value++;
+const updateName = () =>
+  (name.value = name.value == "Jason" ? "Mike" : "Jason");
+
+watchEffect(() => {
+  console.log(`Count is ${count.value}. The name was ${name.value}`);
+});
 </script>
 <template>
-  <h1>Profile</h1>
-  <p>Name : {{ obj.name }}</p>
-  <p>Age : {{ obj.age }}</p>
-  <button @click="updateName">Change name</button>
+  <p>watchEffect</p>
+  <p>count : {{ count }}</p>
+  <p>name : {{ name }}</p>
+  <button @click="counter">Click</button>
+  <button @click="updateName">Change Name</button>
 </template>
