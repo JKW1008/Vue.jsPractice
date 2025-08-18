@@ -1,21 +1,19 @@
 <script setup>
-import { ref, reactive, watch } from "vue";
-const cnt = ref(1);
-const obj = reactive({ oldV: null, newV: null });
-const counter = () => cnt.value++;
-
-// function counter() {
-//   cnt.value++;
-// }
-
-watch(cnt, (newValue, oldValue) => {
-  obj.oldV = oldValue;
-  obj.newV = newValue;
-});
+import { ref, watch } from "vue";
+const obj = ref({ name: "홍길동", age: 30 });
+const updateName = () => (obj.value.name = "Jason");
+watch(
+  obj,
+  (newObj, oldObj) => {
+    console.log(newObj, oldObj);
+    // console.log("Chane the name, now name : " + newObj.name);
+  },
+  { immediate: true, deep: true }
+);
 </script>
 <template>
-  <p>cnt: {{ cnt }}</p>
-  <p>old: {{ obj.oldV }}</p>
-  <p>new: {{ obj.newV }}</p>
-  <button @click="counter">Click</button>
+  <h1>Profile</h1>
+  <p>Name : {{ obj.name }}</p>
+  <p>Age : {{ obj.age }}</p>
+  <button @click="updateName">Change name</button>
 </template>
