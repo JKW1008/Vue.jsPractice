@@ -1,21 +1,13 @@
 <script setup>
-import { reactive, ref } from "vue";
+import { ref } from "vue";
 
-const count = ref(0);
-
-const obj1 = reactive({
-  name: "kim",
-  age: 33,
-});
-
+const a = ref(null);
 const good = () => {
-  // count.value++;
-  obj1.name = "lee";
+  alert(a.value.innerText);
+  alert(document.getElementById("b").innerText);
 };
 </script>
 <template>
-  <p>count : {{ count }}</p>
-  <p>obj1.name : {{ obj1.name }}</p>
-  <p>obj1.age : {{ obj1.age }}</p>
+  <h1 ref="a" id="b">Hi, I'm KingChobo make home page</h1>
   <button @click="good">click</button>
 </template>
